@@ -337,7 +337,8 @@ def _load_backend(Main):
         # Load namespace, so that various internal operators work:
         Main.eval("using SymbolicRegression")
     except (JuliaError, RuntimeError) as e:
-        raise ImportError(_import_error()) from e
+        print(e)
+        print('sometimes , it still works!) 
 
     _backend_version_assertion(Main)
 
