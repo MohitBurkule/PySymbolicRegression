@@ -7,8 +7,8 @@ jobs:
   update_compat:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.9
           cache: pip
@@ -53,7 +53,7 @@ jobs:
           sed -i "s/^__symbolic_regression_jl_version__ = .*/__symbolic_regression_jl_version__ = \"${{ steps.get-latest.outputs.version }}\"/" pysr/version.py
 
       - name: "Create PR"
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.REPO_SCOPED_TOKEN }}
           title: "Automated update to backend: v${{ steps.get-latest.outputs.version }}"
